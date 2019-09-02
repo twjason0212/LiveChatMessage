@@ -1,0 +1,567 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="livecloudModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ChatMessageBlockLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="UserNickName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="State" Type="int" Nullable="false" />
+          <Property Name="Content" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Time" Type="datetime" Nullable="false" />
+          <Property Name="BlockWords" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="dt_BlackWords">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="content" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="state" Type="tinyint" Nullable="false" />
+          <Property Name="remark" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="addtime" Type="datetime" Nullable="false" />
+          <Property Name="updatetime" Type="datetime" Nullable="false" />
+          <Property Name="adminid" Type="int" Nullable="false" />
+          <Property Name="adminname" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="lockid" Type="timestamp" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="dt_liveList">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="code" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="tableId" Type="int" Nullable="false" />
+          <Property Name="liveId" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="dealerId" Type="int" Nullable="false" />
+          <Property Name="state" Type="tinyint" Nullable="false" />
+          <Property Name="stop_time" Type="nvarchar" MaxLength="20" />
+          <Property Name="add_time" Type="datetime" Nullable="false" />
+          <Property Name="update_time" Type="datetime" Nullable="false" />
+          <Property Name="oper" Type="tinyint" Nullable="false" />
+          <Property Name="lockid" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="CloseTitle" Type="nvarchar" MaxLength="100" />
+          <Property Name="CloseContent" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="dt_ManualReview">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Content" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="SensitiveWords" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="SendTime" Type="datetime" Nullable="false" />
+          <Property Name="AddTime" Type="datetime" Nullable="false" />
+          <Property Name="ManagerID" Type="int" Nullable="false" />
+          <Property Name="State" Type="tinyint" Nullable="false" />
+          <Property Name="UserNickName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Target" Type="nvarchar" MaxLength="50" />
+          <Property Name="GameID" Type="varchar" MaxLength="10" />
+          <Property Name="UserLevel" Type="int" />
+          <Property Name="IdentityId" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="dt_SensitiveSentences">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="content" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="state" Type="tinyint" Nullable="false" />
+          <Property Name="remark" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="addtime" Type="datetime" Nullable="false" />
+          <Property Name="updatetime" Type="datetime" Nullable="false" />
+          <Property Name="adminid" Type="int" Nullable="false" />
+          <Property Name="adminname" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="lockid" Type="timestamp" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="dt_SensitiveWords">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="content" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="state" Type="tinyint" Nullable="false" />
+          <Property Name="remark" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="addtime" Type="datetime" Nullable="false" />
+          <Property Name="updatetime" Type="datetime" Nullable="false" />
+          <Property Name="adminid" Type="int" Nullable="false" />
+          <Property Name="adminname" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="lockid" Type="timestamp" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="dt_SystemBarrage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="content" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="state" Type="tinyint" Nullable="false" />
+          <Property Name="operUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="add_time" Type="datetime" Nullable="false" />
+          <Property Name="update_time" Type="datetime" Nullable="false" />
+          <Property Name="lockid" Type="timestamp" StoreGeneratedPattern="Computed" />
+          <Property Name="times" Type="int" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="dt_SystemBarrageLog">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="barrageId" Type="int" Nullable="false" />
+          <Property Name="operUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="add_time" Type="datetime" Nullable="false" />
+          <Property Name="lockid" Type="timestamp" StoreGeneratedPattern="Computed" />
+          <Property Name="signal" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="dt_SystemBarrageTimes">
+          <Key>
+            <PropertyRef Name="systembarrageid" />
+          </Key>
+          <Property Name="systembarrageid" Type="int" Nullable="false" />
+          <Property Name="times" Type="int" Nullable="false" />
+          <Property Name="updatetime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dt_UserBarrageLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="30" />
+          <Property Name="UserNickName" Type="varchar" MaxLength="30" />
+          <Property Name="ChatMessage" Type="varchar" MaxLength="200" />
+          <Property Name="AddTime" Type="datetime2" Precision="7" />
+          <Property Name="lockid" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dt_UserBarrageNoSpeak">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="identityid" Type="varchar" MaxLength="10" />
+          <Property Name="UserName" Type="varchar" MaxLength="30" />
+          <Property Name="UserNickName" Type="varchar" MaxLength="30" />
+          <Property Name="Remark" Type="varchar" MaxLength="100" />
+          <Property Name="Type" Type="int" />
+          <Property Name="Duration" Type="int" />
+          <Property Name="AddTime" Type="datetime" />
+          <Property Name="OperateUser" Type="varchar" MaxLength="30" />
+          <Property Name="lockid" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UsersBroadcastLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LiveId" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BroadcastTime" Type="datetime" Nullable="false" />
+          <Property Name="Content" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="IsSystemDefaultChatMessage" Type="bit" Nullable="false" />
+          <Property Name="LiveChatMessagesId" Type="int" Nullable="false" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="livecloudModelStoreContainer">
+          <EntitySet Name="ChatMessageBlockLog" EntityType="Self.ChatMessageBlockLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dt_BlackWords" EntityType="Self.dt_BlackWords" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dt_liveList" EntityType="Self.dt_liveList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dt_ManualReview" EntityType="Self.dt_ManualReview" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dt_SensitiveSentences" EntityType="Self.dt_SensitiveSentences" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dt_SensitiveWords" EntityType="Self.dt_SensitiveWords" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dt_SystemBarrage" EntityType="Self.dt_SystemBarrage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dt_SystemBarrageLog" EntityType="Self.dt_SystemBarrageLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dt_SystemBarrageTimes" EntityType="Self.dt_SystemBarrageTimes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dt_UserBarrageLog" EntityType="Self.dt_UserBarrageLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dt_UserBarrageNoSpeak" EntityType="Self.dt_UserBarrageNoSpeak" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsersBroadcastLog" EntityType="Self.UsersBroadcastLog" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="livecloudModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="dt_liveList">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tableId" Type="Int32" Nullable="false" />
+          <Property Name="liveId" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dealerId" Type="Int32" Nullable="false" />
+          <Property Name="state" Type="Byte" Nullable="false" />
+          <Property Name="stop_time" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="add_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="update_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="oper" Type="Byte" Nullable="false" />
+          <Property Name="lockid" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="CloseTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CloseContent" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="dt_ManualReview">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Content" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SensitiveWords" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SendTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AddTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ManagerID" Type="Int32" Nullable="false" />
+          <Property Name="State" Type="Byte" Nullable="false" />
+          <Property Name="UserNickName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Target" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GameID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="UserLevel" Type="Int32" />
+          <Property Name="IdentityId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="dt_SensitiveSentences">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="content" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="state" Type="Byte" Nullable="false" />
+          <Property Name="remark" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="addtime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="updatetime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="adminid" Type="Int32" Nullable="false" />
+          <Property Name="adminname" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lockid" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="dt_SensitiveWords">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="content" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="state" Type="Byte" Nullable="false" />
+          <Property Name="remark" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="addtime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="updatetime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="adminid" Type="Int32" Nullable="false" />
+          <Property Name="adminname" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lockid" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="dt_SystemBarrage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="content" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="state" Type="Byte" Nullable="false" />
+          <Property Name="operUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="add_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="update_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="lockid" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="times" Type="Int32" />
+          <Property Name="Remark" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="dt_SystemBarrageLog">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="barrageId" Type="Int32" Nullable="false" />
+          <Property Name="operUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="add_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="lockid" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="signal" Type="Byte" />
+        </EntityType>
+        <EntityType Name="UsersBroadcastLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LiveId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BroadcastTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Content" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsSystemDefaultChatMessage" Type="Boolean" Nullable="false" />
+          <Property Name="LiveChatMessagesId" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="livecloudEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="dt_liveList" EntityType="Self.dt_liveList" />
+          <EntitySet Name="dt_ManualReview" EntityType="Self.dt_ManualReview" />
+          <EntitySet Name="dt_SensitiveSentences" EntityType="Self.dt_SensitiveSentences" />
+          <EntitySet Name="dt_SensitiveWords" EntityType="Self.dt_SensitiveWords" />
+          <EntitySet Name="dt_SystemBarrage" EntityType="Self.dt_SystemBarrage" />
+          <EntitySet Name="dt_SystemBarrageLog" EntityType="Self.dt_SystemBarrageLog" />
+          <EntitySet Name="UsersBroadcastLog" EntityType="Self.UsersBroadcastLog" />
+          <EntitySet Name="dt_UserBarrageLog" EntityType="livecloudModel.dt_UserBarrageLog" />
+          <EntitySet Name="dt_SystemBarrageTimes" EntityType="livecloudModel.dt_SystemBarrageTimes" />
+          <EntitySet Name="ChatMessageBlockLog" EntityType="livecloudModel.ChatMessageBlockLog" />
+          <EntitySet Name="dt_UserBarrageNoSpeak" EntityType="livecloudModel.dt_UserBarrageNoSpeak" />
+          <EntitySet Name="dt_BlackWords" EntityType="livecloudModel.dt_BlackWords" />
+        </EntityContainer>
+        <EntityType Name="dt_UserBarrageLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="UserNickName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ChatMessage" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="AddTime" Type="DateTime" Precision="7" />
+          <Property Name="lockid" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="dt_SystemBarrageTimes">
+          <Key>
+            <PropertyRef Name="systembarrageid" />
+          </Key>
+          <Property Name="systembarrageid" Type="Int32" Nullable="false" />
+          <Property Name="times" Type="Int32" Nullable="false" />
+          <Property Name="updatetime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="ChatMessageBlockLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UserNickName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="Int32" Nullable="false" />
+          <Property Name="Content" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="BlockWords" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="dt_UserBarrageNoSpeak">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="identityid" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="UserNickName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Remark" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="Int32" />
+          <Property Name="Duration" Type="Int32" />
+          <Property Name="AddTime" Type="DateTime" Precision="3" />
+          <Property Name="OperateUser" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="lockid" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="dt_BlackWords">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="content" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="state" Type="Byte" Nullable="false" />
+          <Property Name="remark" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="addtime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="updatetime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="adminid" Type="Int32" Nullable="false" />
+          <Property Name="adminname" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="lockid" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="livecloudModelStoreContainer" CdmEntityContainer="livecloudEntities">
+          <EntitySetMapping Name="dt_liveList">
+            <EntityTypeMapping TypeName="livecloudModel.dt_liveList">
+              <MappingFragment StoreEntitySet="dt_liveList">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="tableId" ColumnName="tableId" />
+                <ScalarProperty Name="liveId" ColumnName="liveId" />
+                <ScalarProperty Name="dealerId" ColumnName="dealerId" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="stop_time" ColumnName="stop_time" />
+                <ScalarProperty Name="add_time" ColumnName="add_time" />
+                <ScalarProperty Name="update_time" ColumnName="update_time" />
+                <ScalarProperty Name="oper" ColumnName="oper" />
+                <ScalarProperty Name="lockid" ColumnName="lockid" />
+                <ScalarProperty Name="CloseTitle" ColumnName="CloseTitle" />
+                <ScalarProperty Name="CloseContent" ColumnName="CloseContent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dt_ManualReview">
+            <EntityTypeMapping TypeName="livecloudModel.dt_ManualReview">
+              <MappingFragment StoreEntitySet="dt_ManualReview">
+                <ScalarProperty Name="IdentityId" ColumnName="IdentityId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="SensitiveWords" ColumnName="SensitiveWords" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="SendTime" ColumnName="SendTime" />
+                <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+                <ScalarProperty Name="ManagerID" ColumnName="ManagerID" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="UserNickName" ColumnName="UserNickName" />
+                <ScalarProperty Name="Target" ColumnName="Target" />
+                <ScalarProperty Name="GameID" ColumnName="GameID" />
+                <ScalarProperty Name="UserLevel" ColumnName="UserLevel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dt_SensitiveSentences">
+            <EntityTypeMapping TypeName="livecloudModel.dt_SensitiveSentences">
+              <MappingFragment StoreEntitySet="dt_SensitiveSentences">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="addtime" ColumnName="addtime" />
+                <ScalarProperty Name="updatetime" ColumnName="updatetime" />
+                <ScalarProperty Name="adminid" ColumnName="adminid" />
+                <ScalarProperty Name="adminname" ColumnName="adminname" />
+                <ScalarProperty Name="lockid" ColumnName="lockid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dt_SensitiveWords">
+            <EntityTypeMapping TypeName="livecloudModel.dt_SensitiveWords">
+              <MappingFragment StoreEntitySet="dt_SensitiveWords">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="addtime" ColumnName="addtime" />
+                <ScalarProperty Name="updatetime" ColumnName="updatetime" />
+                <ScalarProperty Name="adminid" ColumnName="adminid" />
+                <ScalarProperty Name="adminname" ColumnName="adminname" />
+                <ScalarProperty Name="lockid" ColumnName="lockid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dt_SystemBarrage">
+            <EntityTypeMapping TypeName="livecloudModel.dt_SystemBarrage">
+              <MappingFragment StoreEntitySet="dt_SystemBarrage">
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="operUser" ColumnName="operUser" />
+                <ScalarProperty Name="add_time" ColumnName="add_time" />
+                <ScalarProperty Name="update_time" ColumnName="update_time" />
+                <ScalarProperty Name="lockid" ColumnName="lockid" />
+                <ScalarProperty Name="times" ColumnName="times" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dt_SystemBarrageLog">
+            <EntityTypeMapping TypeName="livecloudModel.dt_SystemBarrageLog">
+              <MappingFragment StoreEntitySet="dt_SystemBarrageLog">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="barrageId" ColumnName="barrageId" />
+                <ScalarProperty Name="operUser" ColumnName="operUser" />
+                <ScalarProperty Name="add_time" ColumnName="add_time" />
+                <ScalarProperty Name="lockid" ColumnName="lockid" />
+                <ScalarProperty Name="signal" ColumnName="signal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsersBroadcastLog">
+            <EntityTypeMapping TypeName="livecloudModel.UsersBroadcastLog">
+              <MappingFragment StoreEntitySet="UsersBroadcastLog">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="LiveId" ColumnName="LiveId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="BroadcastTime" ColumnName="BroadcastTime" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="IsSystemDefaultChatMessage" ColumnName="IsSystemDefaultChatMessage" />
+                <ScalarProperty Name="LiveChatMessagesId" ColumnName="LiveChatMessagesId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dt_UserBarrageLog">
+            <EntityTypeMapping TypeName="livecloudModel.dt_UserBarrageLog">
+              <MappingFragment StoreEntitySet="dt_UserBarrageLog">
+                <ScalarProperty Name="lockid" ColumnName="lockid" />
+                <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+                <ScalarProperty Name="ChatMessage" ColumnName="ChatMessage" />
+                <ScalarProperty Name="UserNickName" ColumnName="UserNickName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dt_SystemBarrageTimes">
+            <EntityTypeMapping TypeName="livecloudModel.dt_SystemBarrageTimes">
+              <MappingFragment StoreEntitySet="dt_SystemBarrageTimes">
+                <ScalarProperty Name="updatetime" ColumnName="updatetime" />
+                <ScalarProperty Name="times" ColumnName="times" />
+                <ScalarProperty Name="systembarrageid" ColumnName="systembarrageid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChatMessageBlockLog">
+            <EntityTypeMapping TypeName="livecloudModel.ChatMessageBlockLog">
+              <MappingFragment StoreEntitySet="ChatMessageBlockLog">
+                <ScalarProperty Name="BlockWords" ColumnName="BlockWords" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="UserNickName" ColumnName="UserNickName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dt_UserBarrageNoSpeak">
+            <EntityTypeMapping TypeName="livecloudModel.dt_UserBarrageNoSpeak">
+              <MappingFragment StoreEntitySet="dt_UserBarrageNoSpeak">
+                <ScalarProperty Name="lockid" ColumnName="lockid" />
+                <ScalarProperty Name="OperateUser" ColumnName="OperateUser" />
+                <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="UserNickName" ColumnName="UserNickName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="identityid" ColumnName="identityid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dt_BlackWords">
+            <EntityTypeMapping TypeName="livecloudModel.dt_BlackWords">
+              <MappingFragment StoreEntitySet="dt_BlackWords">
+                <ScalarProperty Name="lockid" ColumnName="lockid" />
+                <ScalarProperty Name="adminname" ColumnName="adminname" />
+                <ScalarProperty Name="adminid" ColumnName="adminid" />
+                <ScalarProperty Name="updatetime" ColumnName="updatetime" />
+                <ScalarProperty Name="addtime" ColumnName="addtime" />
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
