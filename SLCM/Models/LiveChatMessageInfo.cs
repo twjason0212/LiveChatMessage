@@ -27,6 +27,13 @@ namespace SLCM.Models
                 AllowUserGroups = request.Form["AllowUserGroups"] ?? "";
                 UserName = request.Form["UserName"] ?? "";
                 UserNickName = ChineseConverter.ToSimplified(request.Form["UserNickName"] ?? "");
+                CountryName = request.Form["CountryName"] ?? "";
+                RegionName = request.Form["RegionName"] ?? "";
+                CityName = request.Form["CityName"] ?? "";
+                ClientIp = request.Form["ClientIp"] ?? "";
+
+                Log.Info("request", "request", request.Form.ToString());
+
             }
             catch
             { }
@@ -51,6 +58,10 @@ namespace SLCM.Models
         public string UserName { get; set; }
 
         public string UserNickName { get; set; }
+        public string CountryName { get; set; }
+        public string RegionName { get; set; }
+        public string CityName { get; set; }
+        public string ClientIp { get; set; }
 
         public bool ParametersIsValid
         {
@@ -379,7 +390,9 @@ namespace SLCM.Models
                                 UserLevel = UserGroup,
                                 GameID = GameID,
                                 Target = Target,
-                                IdentityId = Identityid
+                                IdentityId = Identityid,
+                                Area = string.Format($"{CountryName} {RegionName} {CityName}"),
+                                Ip = ClientIp,
                             };
                             db.dt_ManualReview.Add(manualReview);
 

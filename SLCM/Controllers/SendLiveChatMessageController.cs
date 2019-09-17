@@ -79,7 +79,7 @@ namespace SLCM.Controllers
                 else
                 {
                     Log.Info("SendBarrage", "SendBarrage", chatInfo.UserName + "_" + chatInfo.ChatMessage);
-
+                   
                     using (var client = new NoKeepAlivesWebClient() { Encoding = Encoding.UTF8 })
                     {
                         client.Headers[HttpRequestHeader.ContentType] = "application/x-www-form-urlencoded";

@@ -27,5 +27,7 @@ namespace SLCM.Models
         public string GameID { get; set; }
         public Nullable<int> UserLevel { get; set; }
         public string IdentityId { get; set; }
+        public string Area { get; set; }
+        public string Ip { get; set; }
     }
 }

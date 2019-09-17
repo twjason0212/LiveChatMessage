@@ -6,7 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="981cb8ea4729431db0dc294668bbb3e0" Name="Diagram1">
         <EntityTypeShape EntityType="livecloudModel.dt_liveList" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="livecloudModel.dt_ManualReview" Width="1.5" PointX="2.625" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="livecloudModel.dt_ManualReview" Width="1.75" PointX="2.625" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="livecloudModel.dt_SensitiveSentences" Width="1.5" PointX="4.5" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="livecloudModel.dt_SensitiveWords" Width="1.5" PointX="8.375" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="livecloudModel.dt_SystemBarrage" Width="1.5" PointX="10.25" PointY="0.75" IsExpanded="true" />
