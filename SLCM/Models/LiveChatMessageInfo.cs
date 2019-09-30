@@ -31,6 +31,7 @@ namespace SLCM.Models
                 RegionName = request.Form["RegionName"] ?? "";
                 CityName = request.Form["CityName"] ?? "";
                 ClientIp = request.Form["ClientIp"] ?? "";
+                IspDomain = request.Form["IspDomain"] ?? "";
 
                 Log.Info("request", "request", request.Form.ToString());
 
@@ -62,6 +63,7 @@ namespace SLCM.Models
         public string RegionName { get; set; }
         public string CityName { get; set; }
         public string ClientIp { get; set; }
+        public string IspDomain { get; set; }
 
         public bool ParametersIsValid
         {
@@ -393,6 +395,7 @@ namespace SLCM.Models
                                 IdentityId = Identityid,
                                 Area = string.Format($"{CountryName} {RegionName} {CityName}"),
                                 Ip = ClientIp,
+                                IspDomain = IspDomain,
                             };
                             db.dt_ManualReview.Add(manualReview);
 
