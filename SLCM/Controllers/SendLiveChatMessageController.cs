@@ -58,6 +58,11 @@ namespace SLCM.Controllers
                     chatInfo.AddNoSpeak(7);
                     return "-8,7";
                 }
+                else if (!chatInfo.InMinSendInterval)
+                {
+                    Log.Info("Barrage", "Barrage", "NotInMinSendInterval:" + chatInfo.UserName);
+                    return "-6";
+                }
                 else if (!chatInfo.SensitiveWordsVerify)
                 {
                     if (!chatInfo.WaitToManualReview)
@@ -70,12 +75,7 @@ namespace SLCM.Controllers
                     Log.Info("Barrage", "Barrage", "Waitfor Manual Review:" + chatInfo.BlockWords);
                     //return BadRequest("LIVEAPI_發言包含敏感詞:" + chatInfo.BlockWords + ", 等待人工審核");
                     return "-5";
-                }
-                else if (!chatInfo.InMinSendInterval)
-                {
-                    Log.Info("Barrage", "Barrage", "NotInMinSendInterval:" + chatInfo.UserName);
-                    return "-6";
-                }
+                }              
                 else
                 {
                     Log.Info("SendBarrage", "SendBarrage", chatInfo.UserName + "_" + chatInfo.ChatMessage);
