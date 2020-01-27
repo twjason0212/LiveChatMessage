@@ -38,6 +38,11 @@ namespace SLCM.Controllers
                     //return BadRequest("LIVEAPI_直播不存在或停播中");
                     return "-2";
                 }
+                else if (!chatInfo.InMinSendInterval)
+                {
+                    Log.Info("Barrage", "Barrage", "NotInMinSendInterval:" + chatInfo.UserName);
+                    return "-6";
+                }
                 //else if (chatInfo.IsSystemDefaultChatMessage && !chatInfo.SystemDefaultChatMessageIsExistsAndAvailable)
                 //{
                 //    Log.Info("Barrage", "Barrage", "SystemDefaultChatMessage Not Exists or Unavailable.");
@@ -57,11 +62,6 @@ namespace SLCM.Controllers
                     Log.Info("Barrage", "Barrage", "BlackWord:" + chatInfo.UserName);
                     chatInfo.AddNoSpeak(7);
                     return "-8,7";
-                }
-                else if (!chatInfo.InMinSendInterval)
-                {
-                    Log.Info("Barrage", "Barrage", "NotInMinSendInterval:" + chatInfo.UserName);
-                    return "-6";
                 }
                 else if (!chatInfo.SensitiveWordsVerify)
                 {
