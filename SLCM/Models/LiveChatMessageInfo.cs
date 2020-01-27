@@ -27,6 +27,7 @@ namespace SLCM.Models
                 AllowUserGroups = request.Form["AllowUserGroups"] ?? "";
                 UserName = request.Form["UserName"] ?? "";
                 UserNickName = ChineseConverter.ToSimplified(request.Form["UserNickName"] ?? "");
+                UserAvatar = request.Form["UserAvatar"] ?? "";
                 CountryName = request.Form["CountryName"] ?? "";
                 RegionName = request.Form["RegionName"] ?? "";
                 CityName = request.Form["CityName"] ?? "";
@@ -59,6 +60,8 @@ namespace SLCM.Models
         public string UserName { get; set; }
 
         public string UserNickName { get; set; }
+
+        public string UserAvatar { get; set; }
         public string CountryName { get; set; }
         public string RegionName { get; set; }
         public string CityName { get; set; }

@@ -94,13 +94,15 @@ namespace SLCM.Controllers
                                 NickName = (!string.IsNullOrEmpty(chatInfo.UserNickName) && SensitiveReplace.IsSafeContent(chatInfo.UserNickName))
                                     ? chatInfo.UserNickName
                                     : SameMethod.FuzzyName(chatInfo.UserName),
-                                Type = "Barrage"
+                                Type = "Barrage",
+                                UserAvatar = chatInfo.UserAvatar,
                             }
                         };
                         var data = "content=" + JsonConvert.SerializeObject(message);//.Replace("\"","");
 
                         Log.TraceLog("target_SendBarrageToTony", data);
                         Log.Info("Target", "Reward", "username:" + chatInfo.UserName + "    " + data);
+
                         // 發送聊天彈幕到Tony_WS
                         var resultg = client.UploadString(Conf.WSUrl, "POST", data);
 

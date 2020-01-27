@@ -19,5 +19,6 @@ namespace SLCM.Models
         public string Message { get; set; }
         public int Level { get; set; }
         public string NickName { get; set; }
+        public string UserAvatar { get; set; }
     }
 }
